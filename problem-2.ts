@@ -1,4 +1,6 @@
-function getLength(value: string | any[]) {
+type Type = string | (string | number)[];
+
+function getLength(value: Type) {
   if (typeof value === "string") {
     return value.length;
   } else {
