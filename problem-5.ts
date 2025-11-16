@@ -1,7 +1,7 @@
 type User = { id: number; name: string; email: string; isActive: boolean };
 
 function filterActiveUsers(users: User[]) {
-  return users.filter((users) => users.isActive === true);
+  return users.filter((user) => user.isActive === true);
 }
 
 const users = [

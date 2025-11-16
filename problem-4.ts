@@ -1,3 +1,17 @@
 type RatingType = { title: string; rating: number };
 
-function filterByRating(items: RatingType[]) {}
+function filterByRating(items: RatingType[]) {
+  return items.filter((item) => {
+    if (item.rating < 0 || item.rating > 5) return false;
+
+    return item.rating >= 4;
+  });
+}
+
+const books = [
+  { title: "Book A", rating: 4.5 },
+  { title: "Book B", rating: 3.2 },
+  { title: "Book C", rating: 5.0 },
+];
+
+console.log(filterByRating(books));
