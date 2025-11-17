@@ -6,12 +6,18 @@ interface Product {
 }
 
 function calculateTotalPrice(products: Product[]): number {
+
   if (products.length === 0) {
     return 0;
   }
 
   const totalPrice = products
     .map((product) => {
+
+    if (product.quantity < 0 || product.quantity > 100) {
+      throw new Error("Quantity must be between 0 and 100");
+    }
+
       const price = product.price >= 0 ? product.price : 0;
       const quantity = product.quantity >= 0 ? product.quantity : 0;
       const discount =
