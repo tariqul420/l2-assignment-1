@@ -115,30 +115,21 @@ interface Product {
 }
 
 function calculateTotalPrice(products: Product[]): number {
-  if (products.length === 0) {
-    return 0;
-  }
+  return products.reduce((total, product) => {
+    if (product.quantity < 0 || product.quantity > 100) {
+      throw new Error("Quantity must be between 0 and 100");
+    }
 
-  const totalPrice = products
-    .map((product) => {
-      if (product.quantity < 0 || product.quantity > 100) {
-        throw new Error("Quantity must be between 0 and 100");
-      }
+    const price = Math.max(product.price, 0);
+    const quantity = Math.max(product.quantity, 0);
+    const discount =
+      typeof product.discount === "number" &&
+      product.discount >= 0 &&
+      product.discount <= 100
+        ? product.discount
+        : 0;
 
-      const price = product.price >= 0 ? product.price : 0;
-      const quantity = product.quantity >= 0 ? product.quantity : 0;
-      const discount =
-        typeof product.discount === "number" &&
-        product.discount >= 0 &&
-        product.discount <= 100
-          ? product.discount
-          : 0;
-
-      const discountPrice = price * (1 - discount / 100);
-
-      return discountPrice * quantity;
-    })
-    .reduce((total, itemTotal) => total + itemTotal, 0);
-
-  return totalPrice;
+    const discountPrice = price * (1 - discount / 100);
+    return total + discountPrice * quantity;
+  }, 0);
 }
