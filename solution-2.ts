@@ -1,6 +1,6 @@
 type Type = string | (string | number)[];
 
-function getLength(value: Type) {
+function getLength(value: Type): number {
   if (typeof value === "string") {
     return value.length;
   } else {

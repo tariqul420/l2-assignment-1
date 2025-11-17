@@ -1,6 +1,6 @@
 type ArrayType = (number | string)[];
 
-function getUniqueValues(arr1: ArrayType, arr2: ArrayType) {
+function getUniqueValues(arr1: ArrayType, arr2: ArrayType): ArrayType {
   const result: ArrayType = [];
 
   function existsInArray(array: ArrayType, value: number | string): boolean {

@@ -5,7 +5,7 @@ interface Book {
   isAvailable: boolean;
 }
 
-function printBookDetails(book: Book) {
+function printBookDetails(book: Book): string {
   return `Title: ${book.title}, Author: ${book.author}, Published: ${
     book.publishedYear
   }, Available: ${book.isAvailable ? "Yes" : "No"}`;

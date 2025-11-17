@@ -1,6 +1,6 @@
-type RatingType = { title: string; rating: number };
+type Rating = { title: string; rating: number };
 
-function filterByRating(items: RatingType[]) {
+function filterByRating(items: Rating[]): Rating[] {
   return items.filter((item) => {
     if (item.rating < 0 || item.rating > 5) return false;
 

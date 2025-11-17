@@ -1,4 +1,6 @@
-function formatValue(value: string | number | boolean) {
+type Value = string | number | boolean;
+
+function formatValue(value: Value): Value {
   if (typeof value === "string") {
     return value.toUpperCase();
   } else if (typeof value === "number") {

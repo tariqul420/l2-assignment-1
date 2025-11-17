@@ -5,7 +5,7 @@ interface Product {
   discount?: number;
 }
 
-function calculateTotalPrice(products: Product[]) {
+function calculateTotalPrice(products: Product[]): number {
   if (products.length === 0) {
     return 0;
   }
